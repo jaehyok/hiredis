@@ -1,0 +1,256 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		E99D73A91D39EBE0004FFDD0 /* async.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = async.c; sourceTree = "<group>"; };
+		E99D73AA1D39EBE0004FFDD0 /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = async.h; sourceTree = "<group>"; };
+		E99D73AB1D39EBE0004FFDD0 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		E99D73AC1D39EBE0004FFDD0 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		E99D73AD1D39EBE0004FFDD0 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
+		E99D73AE1D39EBE0004FFDD0 /* dict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dict.h; sourceTree = "<group>"; };
+		E99D73B01D39EBE0004FFDD0 /* example-ae.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-ae.c"; sourceTree = "<group>"; };
+		E99D73B11D39EBE0004FFDD0 /* example-glib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-glib.c"; sourceTree = "<group>"; };
+		E99D73B21D39EBE0004FFDD0 /* example-ivykis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-ivykis.c"; sourceTree = "<group>"; };
+		E99D73B31D39EBE0004FFDD0 /* example-libev.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-libev.c"; sourceTree = "<group>"; };
+		E99D73B41D39EBE0004FFDD0 /* example-libevent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-libevent.c"; sourceTree = "<group>"; };
+		E99D73B51D39EBE0004FFDD0 /* example-libuv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-libuv.c"; sourceTree = "<group>"; };
+		E99D73B61D39EBE0004FFDD0 /* example-macosx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "example-macosx.c"; sourceTree = "<group>"; };
+		E99D73B71D39EBE0004FFDD0 /* example-qt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "example-qt.cpp"; sourceTree = "<group>"; };
+		E99D73B81D39EBE0004FFDD0 /* example-qt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "example-qt.h"; sourceTree = "<group>"; };
+		E99D73B91D39EBE0004FFDD0 /* example.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = example.c; sourceTree = "<group>"; };
+		E99D73BA1D39EBE0004FFDD0 /* fmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmacros.h; sourceTree = "<group>"; };
+		E99D73BB1D39EBEF004FFDD0 /* hiredis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hiredis.c; sourceTree = "<group>"; };
+		E99D73BC1D39EBEF004FFDD0 /* hiredis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hiredis.h; sourceTree = "<group>"; };
+		E99D73BD1D39EBEF004FFDD0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E99D73BE1D39EBEF004FFDD0 /* net.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = net.c; sourceTree = "<group>"; };
+		E99D73BF1D39EBEF004FFDD0 /* net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = net.h; sourceTree = "<group>"; };
+		E99D73C01D39EBEF004FFDD0 /* read.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = read.c; sourceTree = "<group>"; };
+		E99D73C11D39EBEF004FFDD0 /* read.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = read.h; sourceTree = "<group>"; };
+		E99D73C21D39EBEF004FFDD0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E99D73C31D39EBEF004FFDD0 /* sds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sds.c; sourceTree = "<group>"; };
+		E99D73C41D39EBEF004FFDD0 /* sds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sds.h; sourceTree = "<group>"; };
+		E99D73C51D39EBEF004FFDD0 /* sdsalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdsalloc.h; sourceTree = "<group>"; };
+		E99D73C61D39EBEF004FFDD0 /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
+		E99D73C71D39EBEF004FFDD0 /* win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win32.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		E99D739E1D39E81B004FFDD0 = {
+			isa = PBXGroup;
+			children = (
+				E99D73A91D39EBE0004FFDD0 /* async.c */,
+				E99D73AA1D39EBE0004FFDD0 /* async.h */,
+				E99D73AB1D39EBE0004FFDD0 /* CHANGELOG.md */,
+				E99D73AC1D39EBE0004FFDD0 /* COPYING */,
+				E99D73AD1D39EBE0004FFDD0 /* dict.c */,
+				E99D73AE1D39EBE0004FFDD0 /* dict.h */,
+				E99D73AF1D39EBE0004FFDD0 /* examples */,
+				E99D73BA1D39EBE0004FFDD0 /* fmacros.h */,
+				E99D73BB1D39EBEF004FFDD0 /* hiredis.c */,
+				E99D73BC1D39EBEF004FFDD0 /* hiredis.h */,
+				E99D73BD1D39EBEF004FFDD0 /* Makefile */,
+				E99D73BE1D39EBEF004FFDD0 /* net.c */,
+				E99D73BF1D39EBEF004FFDD0 /* net.h */,
+				E99D73C01D39EBEF004FFDD0 /* read.c */,
+				E99D73C11D39EBEF004FFDD0 /* read.h */,
+				E99D73C21D39EBEF004FFDD0 /* README.md */,
+				E99D73C31D39EBEF004FFDD0 /* sds.c */,
+				E99D73C41D39EBEF004FFDD0 /* sds.h */,
+				E99D73C51D39EBEF004FFDD0 /* sdsalloc.h */,
+				E99D73C61D39EBEF004FFDD0 /* test.c */,
+				E99D73C71D39EBEF004FFDD0 /* win32.h */,
+			);
+			sourceTree = "<group>";
+		};
+		E99D73AF1D39EBE0004FFDD0 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				E99D73B01D39EBE0004FFDD0 /* example-ae.c */,
+				E99D73B11D39EBE0004FFDD0 /* example-glib.c */,
+				E99D73B21D39EBE0004FFDD0 /* example-ivykis.c */,
+				E99D73B31D39EBE0004FFDD0 /* example-libev.c */,
+				E99D73B41D39EBE0004FFDD0 /* example-libevent.c */,
+				E99D73B51D39EBE0004FFDD0 /* example-libuv.c */,
+				E99D73B61D39EBE0004FFDD0 /* example-macosx.c */,
+				E99D73B71D39EBE0004FFDD0 /* example-qt.cpp */,
+				E99D73B81D39EBE0004FFDD0 /* example-qt.h */,
+				E99D73B91D39EBE0004FFDD0 /* example.c */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		E99D73A31D39E81B004FFDD0 /* helloredis */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = E99D73A61D39E81B004FFDD0 /* Build configuration list for PBXLegacyTarget "helloredis" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = helloredis;
+			passBuildSettingsInEnvironment = 1;
+			productName = helloredis;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		E99D739F1D39E81B004FFDD0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = jaehyok;
+				TargetAttributes = {
+					E99D73A31D39E81B004FFDD0 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = E99D73A21D39E81B004FFDD0 /* Build configuration list for PBXProject "helloredis" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E99D739E1D39E81B004FFDD0;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E99D73A31D39E81B004FFDD0 /* helloredis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		E99D73A41D39E81B004FFDD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		E99D73A51D39E81B004FFDD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		E99D73A71D39E81B004FFDD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E99D73A81D39E81B004FFDD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E99D73A21D39E81B004FFDD0 /* Build configuration list for PBXProject "helloredis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E99D73A41D39E81B004FFDD0 /* Debug */,
+				E99D73A51D39E81B004FFDD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E99D73A61D39E81B004FFDD0 /* Build configuration list for PBXLegacyTarget "helloredis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E99D73A71D39E81B004FFDD0 /* Debug */,
+				E99D73A81D39E81B004FFDD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E99D739F1D39E81B004FFDD0 /* Project object */;
+}
