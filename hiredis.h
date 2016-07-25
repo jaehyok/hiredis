@@ -218,8 +218,8 @@ void *redisvCommand(redisContext *c, const char *format, va_list ap);
 void *redisCommand(redisContext *c, const char *format, ...);
 void *redisCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen);
 
-//void *redisPush(redisContext *c, std::string key, std::string value, std::string &uuid);
-//void *redisPop(redisContext *c, std::string &key, std::string &value, std::string &uuid);
+void *redisPush(redisContext *c, std::string queue, std::string key, std::string value, std::string &uuid);
+void *redisPop(redisContext *c, std::string queue, std::string &uuid);
 
 #ifdef __cplusplus
 }
