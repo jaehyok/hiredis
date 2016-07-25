@@ -3,7 +3,7 @@
 # Copyright (C) 2010-2011 Pieter Noordhuis <pcnoordhuis at gmail dot com>
 # This file is released under the BSD license, see the COPYING file
 
-OSX_INC=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include
+OSX_INC=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1
 
 OBJ=net.o hiredis.o sds.o async.o read.o
 EXAMPLES=hiredis-example hiredis-example-libevent hiredis-example-libev hiredis-example-glib
@@ -38,12 +38,15 @@ endef
 export REDIS_TEST_CONFIG
 
 # Fallback to gcc when $CC is not in $PATH.
-CC:=$(shell sh -c 'type $(CC) >/dev/null 2>/dev/null && echo $(CC) || echo gcc')
+#CC:=$(shell sh -c 'type $(CC) >/dev/null 2>/dev/null && echo $(CC) || echo gcc')
+#CC:=clang++
+CC:=g++
 CXX:=$(shell sh -c 'type $(CXX) >/dev/null 2>/dev/null && echo $(CXX) || echo g++')
 OPTIMIZATION?=-O3
 WARNINGS=-Wall -W -Wstrict-prototypes -Wwrite-strings
 DEBUG_FLAGS?= -g -ggdb
-REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CFLAGS) $(WARNINGS) $(DEBUG_FLAGS) $(ARCH)
+REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CFLAGS) $(WARNINGS) $(DEBUG_FLAGS) $(ARCH) -fno-implicit-templates
+LDFLAGS=-stdlib=libstdc++
 REAL_LDFLAGS=$(LDFLAGS) $(ARCH)
 
 DYLIBSUFFIX=so
@@ -155,7 +158,8 @@ check: hiredis-test
 	kill `cat /tmp/hiredis-test-redis.pid`
 
 .c.o:
-	$(CC) -std=c99 -pedantic -c $(REAL_CFLAGS) -I$(OSX_INC) $<
+	$(CC) -std=c++11 -pedantic -c $(REAL_CFLAGS) -I$(OSX_INC) $<
+
 
 clean:
 	rm -rf $(DYLIBNAME) $(STLIBNAME) $(TESTS) $(PKGCONFNAME) examples/hiredis-example* *.o *.gcda *.gcno *.gcov
