@@ -61,7 +61,7 @@ static redisReplyObjectFunctions defaultFunctions = {
 
 /* Create a reply object */
 static redisReply *createReplyObject(int type) {
-    redisReply *r = calloc(1,sizeof(*r));
+    redisReply *r = (redisReply *)calloc(1,sizeof(*r));
 
     if (r == NULL)
         return NULL;
@@ -72,7 +72,7 @@ static redisReply *createReplyObject(int type) {
 
 /* Free a reply object */
 void freeReplyObject(void *reply) {
-    redisReply *r = reply;
+    redisReply *r = (redisReply *)reply;
     size_t j;
 
     if (r == NULL)
@@ -107,7 +107,7 @@ static void *createStringObject(const redisReadTask *task, char *str, size_t len
     if (r == NULL)
         return NULL;
 
-    buf = malloc(len+1);
+    buf = (char *)malloc(len+1);
     if (buf == NULL) {
         freeReplyObject(r);
         return NULL;
@@ -124,7 +124,7 @@ static void *createStringObject(const redisReadTask *task, char *str, size_t len
     r->len = len;
 
     if (task->parent) {
-        parent = task->parent->obj;
+        parent = (redisReply *)task->parent->obj;
         assert(parent->type == REDIS_REPLY_ARRAY);
         parent->element[task->idx] = r;
     }
@@ -139,7 +139,7 @@ static void *createArrayObject(const redisReadTask *task, int elements) {
         return NULL;
 
     if (elements > 0) {
-        r->element = calloc(elements,sizeof(redisReply*));
+        r->element = (redisReply**)calloc(elements,sizeof(redisReply*));
         if (r->element == NULL) {
             freeReplyObject(r);
             return NULL;
@@ -149,7 +149,7 @@ static void *createArrayObject(const redisReadTask *task, int elements) {
     r->elements = elements;
 
     if (task->parent) {
-        parent = task->parent->obj;
+        parent = (redisReply*)task->parent->obj;
         assert(parent->type == REDIS_REPLY_ARRAY);
         parent->element[task->idx] = r;
     }
@@ -166,7 +166,7 @@ static void *createIntegerObject(const redisReadTask *task, long long value) {
     r->integer = value;
 
     if (task->parent) {
-        parent = task->parent->obj;
+        parent = (redisReply*)task->parent->obj;
         assert(parent->type == REDIS_REPLY_ARRAY);
         parent->element[task->idx] = r;
     }
@@ -181,7 +181,7 @@ static void *createNilObject(const redisReadTask *task) {
         return NULL;
 
     if (task->parent) {
-        parent = task->parent->obj;
+        parent = (redisReply*)task->parent->obj;
         assert(parent->type == REDIS_REPLY_ARRAY);
         parent->element[task->idx] = r;
     }
@@ -232,7 +232,7 @@ int redisvFormatCommand(char **target, const char *format, va_list ap) {
         if (*c != '%' || c[1] == '\0') {
             if (*c == ' ') {
                 if (touched) {
-                    newargv = realloc(curargv,sizeof(char*)*(argc+1));
+                    newargv = (char**)realloc(curargv,sizeof(char*)*(argc+1));
                     if (newargv == NULL) goto memory_err;
                     curargv = newargv;
                     curargv[argc++] = curarg;
@@ -381,7 +381,7 @@ int redisvFormatCommand(char **target, const char *format, va_list ap) {
 
     /* Add the last argument if needed */
     if (touched) {
-        newargv = realloc(curargv,sizeof(char*)*(argc+1));
+        newargv = (char**)realloc(curargv,sizeof(char*)*(argc+1));
         if (newargv == NULL) goto memory_err;
         curargv = newargv;
         curargv[argc++] = curarg;
@@ -397,7 +397,7 @@ int redisvFormatCommand(char **target, const char *format, va_list ap) {
     totlen += 1+countDigits(argc)+2;
 
     /* Build the command at protocol level */
-    cmd = malloc(totlen+1);
+    cmd = (char*)malloc(totlen+1);
     if (cmd == NULL) goto memory_err;
 
     pos = sprintf(cmd,"*%d\r\n",argc);
@@ -545,7 +545,7 @@ int redisFormatCommandArgv(char **target, int argc, const char **argv, const siz
     }
 
     /* Build the command at protocol level */
-    cmd = malloc(totlen+1);
+    cmd = (char*)malloc(totlen+1);
     if (cmd == NULL)
         return -1;
 
@@ -592,7 +592,7 @@ redisReader *redisReaderCreate(void) {
 static redisContext *redisContextInit(void) {
     redisContext *c;
 
-    c = calloc(1,sizeof(redisContext));
+    c = (redisContext *)calloc(1,sizeof(redisContext));
     if (c == NULL)
         return NULL;
 
@@ -1015,7 +1015,39 @@ void *redisCommand(redisContext *c, const char *format, ...) {
 }
 
 void *redisCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {
+	std::string a = "";
     if (redisAppendCommandArgv(c,argc,argv,argvlen) != REDIS_OK)
         return NULL;
     return __redisBlockForReply(c);
 }
+
+#include "uuid/uuid.h"
+
+std::string getUUID()
+{
+	uuid_t id;
+	char uuid_s[37] = {0,};
+	uuid_generate_time(id);
+	uuid_unparse(id, uuid_s);
+	std::string uuid = uuid_s;
+	return uuid;
+}
+
+void *redisPush(redisContext *c, std::string queue, std::string key, std::string value, std::string &uuid){
+	uuid = getUUID();
+	redisReply* reply = (redisReply*)redisCommand(c, "RPUSH %s %s", uuid.c_str(), queue.c_str());
+	if(reply && reply->type != REDIS_REPLY_ERROR &&  reply->type != REDIS_REPLY_NIL)
+		reply = (redisReply*)redisCommand(c, "HSET %s %s %s", uuid.c_str(), key.c_str(), value.c_str());
+	return reply;
+}
+
+void *redisPop(redisContext *c, std::string queue, std::string &uuid){
+	redisReply* reply = (redisReply*)redisCommand(c, "LPOP %s", queue.c_str());
+	if(reply && reply->type != REDIS_REPLY_ERROR &&  reply->type != REDIS_REPLY_NIL)
+	{
+		uuid = reply->str;
+		reply = (redisReply*)redisCommand(c, "HGETALL %s", uuid.c_str());
+	}
+	return reply;
+}
+

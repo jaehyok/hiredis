@@ -38,6 +38,8 @@
 #include <sys/time.h> /* for struct timeval */
 #include <stdint.h> /* uintXX_t, etc */
 #include "sds.h" /* for sds */
+#include <string>
+#include <c++/4.2.1/map>
 
 #define HIREDIS_MAJOR 0
 #define HIREDIS_MINOR 13
@@ -215,6 +217,9 @@ int redisAppendCommandArgv(redisContext *c, int argc, const char **argv, const s
 void *redisvCommand(redisContext *c, const char *format, va_list ap);
 void *redisCommand(redisContext *c, const char *format, ...);
 void *redisCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen);
+
+//void *redisPush(redisContext *c, std::string key, std::string value, std::string &uuid);
+//void *redisPop(redisContext *c, std::string &key, std::string &value, std::string &uuid);
 
 #ifdef __cplusplus
 }
